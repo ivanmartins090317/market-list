@@ -25,8 +25,8 @@ const Form = ({ onAddItem}) =>{
   return(
     <>
      <form onSubmit={handleSubmit}>
-          <div>
-          <div className="relative mt-5 rounded-md shadow-sm">
+          <div className="p-4 ">
+          <div className="relative mt-5 rounded-md shadow-sm w-96 m-auto">
                 <input type="text" name="price" id="price" 
                  className="block w-full rounded-md border-0 py- 
                   1.5 pl-7 pr-20 
@@ -44,8 +44,7 @@ const Form = ({ onAddItem}) =>{
 
                 
                   <select id="currency" name="currency" 
-                   className="h-full rounded-md border-1 bg- 
-                    transparent py-0 pl-2 pr-7 text-gray-500 
+                   className="h-full rounded-md border-1 bg-inherit py-0 pl-2 pr-7 text-gray-500 
                      focus:ring-2 focus:ring-inset focus:ring- 
                       indigo-600 sm:text-sm" 
                       value={value} 
