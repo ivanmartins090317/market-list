@@ -1,36 +1,32 @@
 import { useState } from "react" 
 
-import { Form } from "./componets/form"
+import { Form } from "./components/form"
+import { ItemComponent } from "./components/item"
+import { Footer } from "./components/footer"
+
 
 const App = () => {
 const [items, setItems] = useState([])
+const [showInput, setShowInput] = useState("false")
+
 
 const handleAddItem = (item) => setItems(prevState => [...prevState, item])
-const handleDeleteItem = (itemID) => setItems(items.filter(item => item.id !== itemID))
-const handlecheck = (itemID) =>{
-  setItems(prevState => prevState.map(item => item.id === itemID ? {...item, stored : !item.stored} : item))
-}
+const handleToggleInput = () =>setShowInput(prev =>!prev)
+
+
   return(
-    <>
-     <Form onAddItem={handleAddItem}/>
-     {items && 
-      
-        items.map(item =>(
-          <div key={item.id} className="flex items-center justify-center mt-8 gap-6 border w-56 py-1 rounded-md m-auto">
-            <input type="checkbox" name="item-list" onChange={() => handlecheck(item.id)}/>
-           <span className={item.stored ? 'line-through' : ''}> 
-            {item.name}-
-            {item.quantity}
-           </span>
-             <button className="border px-1 rounded-md bg-red-400" onClick={() => handleDeleteItem(item.id)}>
-              X
-             </button>
-          </div>
-        ))
-      
-     }
-    </>
+    <div className="w-[95%] md:w-[50%] m-auto">
+      <div className="w-full mt-5 text-center mb-5">
+        <button onClick={handleToggleInput} 
+         className="py-1 px-4 rounded-md bg-gray-50"
+         >{showInput ? "- remover" : "+ adicionar"}</button>
+      </div>
+        { showInput && <Form onAddItem={handleAddItem}/>}   
+        {items && <ItemComponent items={items} setItems={setItems}/>}
+        <div className="mb-[5%]"></div>
+        <Footer items={items}/>
+    </div>
   )
 }
-
+  
 export { App } 
