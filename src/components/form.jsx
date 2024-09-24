@@ -26,7 +26,7 @@ const Form = ({ onAddItem}) =>{
     <>
      <form onSubmit={handleSubmit}>
           <div className="p-4 ">
-          <div className="flex relative rounded-md shadow-sm w-76 max-[780px]:w-60 m-auto">
+          <div className="flex relative rounded-md shadow-sm w-76 m-auto ml-[-15px]">
           <select id="currency" name="currency" 
                     value={value} 
                     onChange={handleSelectOption}
